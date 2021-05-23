@@ -54,10 +54,9 @@ $(document).ready(function () {
         console.log(event.target);
         // console.log(event.target.getAttribute('dataid'));
         var dataid = event.target.getAttribute('dataid');
-        if (event.target.matches)
-          var textValue = document
-            .querySelector(`.description[dataid='${dataid}']`)
-            .val();
+        var textValue = document
+          .querySelector(`.description[dataid='${dataid}']`)
+          .val();
         saveTask(textValue, dataid);
       });
 
