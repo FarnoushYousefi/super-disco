@@ -30,7 +30,7 @@ $(document).ready(function () {
 
     var text = $('<textarea>')
       .addClass('col-7 description')
-      .attr('dataid', numbers[i]);
+      .attr('id', numbers[i]);
     //past, present, or future
     //add addition class
     if (localStorage.getItem('hour' + numbers[i])) {
@@ -49,14 +49,12 @@ $(document).ready(function () {
     var saveButton = $('<div>')
       .addClass('col-2 btn saveBtn')
       .attr('dataid', numbers[i])
-      .text('Save')
+      .text('save')
       .click(function (event) {
         console.log(event.target);
         // console.log(event.target.getAttribute('dataid'));
         var dataid = event.target.getAttribute('dataid');
-        var textValue = document
-          .querySelector(`.description[dataid='${dataid}']`)
-          .val();
+        var textValue = $('#' + dataid).val();
         saveTask(textValue, dataid);
       });
 
