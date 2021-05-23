@@ -50,20 +50,8 @@ $(document).ready(function () {
       .addClass('col-2 btn saveBtn')
       .attr('dataid', numbers[i])
       .text('save');
-    // .click(function (event) {
-    //   var targetEl = event.target;
-    //   console.log(targetEl);
-    //   // console.log(event.target.getAttribute('dataid'));
-    //   var dataid = event.target.getAttribute('dataid');
-    //   var textValue = document.querySelector(
-    //     `.description[dataid='${dataid}']`
-    //   ).value;
-    //   console.log(textValue);
-    //   saveTask(textValue, dataid);
-    // });
 
     row.append(numbersEI, text, saveButton);
-    //append in order to row
 
     $('.container').append(row);
   }
@@ -81,17 +69,15 @@ var taskButtonHandler = function (event) {
   var textValue = document.querySelector(
     ".description[dataid='" + dataid + "']"
   ).value;
+
+  // var textValue = document.querySelector(
+  //   `.description[dataid='${dataid}']`
+  // ).value;
+  // var textValue = document.querySelector('.description ').value;
+  // Console.log(textValue);
+  console.log(textValue);
+  // Console.log(dataid);
   saveTask(textValue, dataid);
 };
 
 pageContentEl.addEventListener('click', taskButtonHandler);
-//   var targetEl = event.target;
-//   console.log(targetEl);
-//   console.log(event.target.getAttribute('dataid'));
-//   var dataid = event.target.getAttribute('dataid');
-//   var textValue = document.querySelector(
-//     `.description[dataid='${dataid}']`
-//   ).value;
-//   console.log(textValue);
-//   saveTask(textValue, dataid);
-// });
