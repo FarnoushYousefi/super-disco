@@ -30,7 +30,7 @@ $(document).ready(function () {
 
     var text = $('<textarea>')
       .addClass('col-7 description')
-      .attr('id', numbers[i]);
+      .attr('dataid', numbers[i]);
     //past, present, or future
     //add addition class
     if (localStorage.getItem('hour' + numbers[i])) {
@@ -54,7 +54,10 @@ $(document).ready(function () {
         console.log(event.target);
         // console.log(event.target.getAttribute('dataid'));
         var dataid = event.target.getAttribute('dataid');
-        var textValue = $('#' + dataid).val();
+        var textValue = document.querySelector(
+          `.description[dataid='${dataid}']`.value()
+        );
+        console.log(textValue);
         saveTask(textValue, dataid);
       });
 
