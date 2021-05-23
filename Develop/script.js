@@ -1,4 +1,4 @@
-var tasks = {};
+var pageContentEl = document.querySelector('#container');
 
 $(document).ready(function () {
   var currentDay = $('#currentDay');
@@ -7,17 +7,17 @@ $(document).ready(function () {
   currentDay.text(currentDate);
 
   tasks = JSON.parse(localStorage.getItem('tasks'));
-  if (!tasks) {
-    tasks = {
-      description: [],
-    };
+  // if (!tasks) {
+  //   tasks = {
+  //     description: [],
+  //   };
 
-    $.each(tasks, function (list, arr) {
-      arr.forEach((task) => {
-        createTask(task.text);
-      });
-    });
-  }
+  //   $.each(tasks, function (list, arr) {
+  //     arr.forEach((task) => {
+  //       createTask(task.text);
+  //     });
+  //   });
+  // }
 
   var numbers = [9, 10, 11, 12, 13, 14, 15, 16, 17];
   var currentHour = moment().hour();
@@ -49,17 +49,18 @@ $(document).ready(function () {
     var saveButton = $('<div>')
       .addClass('col-2 btn saveBtn')
       .attr('dataid', numbers[i])
-      .text('save')
-      .click(function (event) {
-        console.log(event.target);
-        // console.log(event.target.getAttribute('dataid'));
-        var dataid = event.target.getAttribute('dataid');
-        var textValue = document.querySelector(
-          `.description[dataid='${dataid}']`
-        ).value;
-        console.log(textValue);
-        saveTask(textValue, dataid);
-      });
+      .text('save');
+    // .click(function (event) {
+    //   var targetEl = event.target;
+    //   console.log(targetEl);
+    //   // console.log(event.target.getAttribute('dataid'));
+    //   var dataid = event.target.getAttribute('dataid');
+    //   var textValue = document.querySelector(
+    //     `.description[dataid='${dataid}']`
+    //   ).value;
+    //   console.log(textValue);
+    //   saveTask(textValue, dataid);
+    // });
 
     row.append(numbersEI, text, saveButton);
     //append in order to row
@@ -71,3 +72,28 @@ $(document).ready(function () {
 var saveTask = function (textValue, hour) {
   localStorage.setItem('hour' + hour, textValue);
 };
+
+var taskButtonHandler = function (event) {
+  var targetE1 = event.target;
+  if (targetE1.matches('.saveBtn')) {
+    var dataid = targetE1.getAttribute('dataid');
+  }
+  var textValue = document.querySelector(
+    ".description[dataid='" + dataid + "']"
+  );
+  saveTask(textValue, dataid);
+};
+
+pageContentEl.addEventListener('click', taskButtonHandler);
+
+// pageContentEl.addEventListener('click', function () {
+//   var targetEl = event.target;
+//   console.log(targetEl);
+//   console.log(event.target.getAttribute('dataid'));
+//   var dataid = event.target.getAttribute('dataid');
+//   var textValue = document.querySelector(
+//     `.description[dataid='${dataid}']`
+//   ).value;
+//   console.log(textValue);
+//   saveTask(textValue, dataid);
+// });
