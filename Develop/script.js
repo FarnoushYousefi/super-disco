@@ -1,4 +1,4 @@
-var pageContentEl = document.querySelector('#container');
+var pageContentEl = document.querySelector('.container');
 
 $(document).ready(function () {
   var currentDay = $('#currentDay');
@@ -80,13 +80,11 @@ var taskButtonHandler = function (event) {
   }
   var textValue = document.querySelector(
     ".description[dataid='" + dataid + "']"
-  );
+  ).value;
   saveTask(textValue, dataid);
 };
 
 pageContentEl.addEventListener('click', taskButtonHandler);
-
-// pageContentEl.addEventListener('click', function () {
 //   var targetEl = event.target;
 //   console.log(targetEl);
 //   console.log(event.target.getAttribute('dataid'));
