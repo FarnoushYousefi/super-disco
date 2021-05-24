@@ -46,10 +46,9 @@ $(document).ready(function () {
       $(text).addClass('future');
     }
 
-    var saveButton = $('<div>')
-      .addClass('col-2 btn saveBtn')
-      .attr('dataid', numbers[i])
-      .text('save');
+    var saveButton = $('<button>')
+      .addClass('col-2 btn saveBtn fas fa-save')
+      .attr('dataid', numbers[i]);
 
     row.append(numbersEI, text, saveButton);
 
@@ -66,18 +65,16 @@ var taskButtonHandler = function (event) {
   if (targetE1.matches('.saveBtn')) {
     var dataid = targetE1.getAttribute('dataid');
   }
-  var textValue = document.querySelector(
-    ".description[dataid='" + dataid + "']"
-  ).value;
-
-  // var textValue = document.querySelector(
-  //   `.description[dataid='${dataid}']`
-  // ).value;
-  // var textValue = document.querySelector('.description ').value;
-  // Console.log(textValue);
-  console.log(textValue);
-  // Console.log(dataid);
-  saveTask(textValue, dataid);
+  var textValue; //initialize as empty variable
+  if (document.querySelector(".description[dataid='" + dataid + "']")) {
+    textValue = document.querySelector(
+      ".description[dataid='" + dataid + "']"
+    ).value;
+    console.log(textValue);
+    saveTask(textValue, dataid);
+  } else {
+    console.log('document.querySelector() returned null.');
+  }
 };
 
 pageContentEl.addEventListener('click', taskButtonHandler);
