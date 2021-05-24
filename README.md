@@ -15,3 +15,7 @@ WHEN I refresh the page
 THEN the saved events persist
 
 ## deploy link
+https://farnoushyousefi.github.io/super-disco/
+
+## GitHUb link
+https://github.com/FarnoushYousefi/super-disco
